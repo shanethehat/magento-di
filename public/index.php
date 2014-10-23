@@ -68,6 +68,12 @@ if (file_exists($maintenanceFile)) {
 
 require_once $mageFilename;
 
+$diConfig = array();
+if (file_exists('../vendor/autoload.php') && class_exists('Sth_Di_Model_Config')) {
+    require_once('../vendor/autoload.php');
+    $diConfig['config_model'] = 'Sth_Di_Model_Config';
+}
+
 #Varien_Profiler::enable();
 
 if (isset($_SERVER['MAGE_IS_DEVELOPER_MODE'])) {
@@ -84,4 +90,4 @@ $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : ''
 /* Run store or run website */
 $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
 
-Mage::run($mageRunCode, $mageRunType, array('config_model' => 'Sth_Di_Model_Config'));
+Mage::run($mageRunCode, $mageRunType, $diConfig);

@@ -1,0 +1,18 @@
+# General
+*.vagrant
+.bundle
+build/*
+tools
+bin/*
+.DS_Store
+Gemfile
+Gemfile.lock
+
+# Composer
+vendor
+composer.phar
+
+# Magento
+public/*
+!public/app/code/local
+!public/index.php

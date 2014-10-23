@@ -1,0 +1,30 @@
+{
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "magetest/magento-phpspec-extension": "dev-develop",
+        "squizlabs/php_codesniffer": "1.*",
+        "phpmd/phpmd": "1.*",
+        "sebastian/phpcpd": "2.*",
+        "pdepend/pdepend": "1.*",
+        "phploc/phploc": "2.*"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "MageTest\\PhpSpec\\MagentoExtension": "src",
+            "": [
+                "public/app/code/local",
+                "public/app/code/community",
+                "public/app/code/core",
+                "public/app",
+                "public/lib"
+            ],
+            "Mage" : "public/app/code/core"
+        }
+    }
+}

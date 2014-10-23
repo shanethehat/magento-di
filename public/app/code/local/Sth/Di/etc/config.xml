@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Sth_Di>
+            <version>0.1.0</version>
+        </Sth_Di>
+    </modules>
+    <global>
+        <models>
+            <sth_di>
+                <class>Sth_Di_Model</class>
+            </sth_di>
+        </models>
+    </global>
+</config>

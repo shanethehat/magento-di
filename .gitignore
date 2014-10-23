@@ -13,6 +13,15 @@ vendor
 composer.phar
 
 # Magento
-public/*
-!public/app/code/local
-!public/index.php
+/public/*
+!/public/app/
+/public/app/*
+!/public/app/code/
+!/public/app/etc/
+/public/app/code/*
+!/public/app/code/local/
+/public/app/etc/*
+!/public/app/etc/modules/
+/public/app/etc/modules/*
+!/public/app/etc/modules/Sth_Di.xml
+!/public/index.php

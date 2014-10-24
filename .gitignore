@@ -18,6 +18,7 @@ composer.phar
 /public/app/*
 !/public/app/code/
 !/public/app/etc/
+!/public/app/Mage.php
 /public/app/code/*
 !/public/app/code/local/
 /public/app/etc/*

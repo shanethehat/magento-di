@@ -17,3 +17,7 @@ If we run with the idea of placing our domain model outside of Magento then we a
 ## Installation
 
 Install the module as normal. The implementation also requires that changes are made to public/index.php and public/app/Mage.php. Then run Composer.
+
+## Is this actually useful?
+
+I have no idea yet. It all sounds reasonable on paper, but there may be massive drawbacks, or something I've not thought of yet that makes the whole concept redundant. It'll be fun finding out.

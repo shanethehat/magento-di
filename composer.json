@@ -10,23 +10,23 @@
         "phpmd/phpmd": "1.*",
         "sebastian/phpcpd": "2.*",
         "pdepend/pdepend": "1.*",
-        "phploc/phploc": "2.*"
+        "phploc/phploc": "2.*",
+        "magetest/magento": "~1.8.1.0"
     },
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "MageTest\\PhpSpec\\MagentoExtension": "src",
             "": [
-                "public/app/code/local",
-                "public/app/code/community",
-                "public/app/code/core",
-                "public/app",
-                "public/lib"
+                "vendor/magetest/magento/src/app",
+                "vendor/magetest/magento/src/lib",
+                "vendor/magetest/magento/src/app/code/local",
+                "vendor/magetest/magento/src/app/code/community",
+                "vendor/magetest/magento/src/app/code/core"
             ],
-            "Mage" : "public/app/code/core"
+            "Mage": "vendor/magetest/magento/src/app/code/core"
         }
     }
 }

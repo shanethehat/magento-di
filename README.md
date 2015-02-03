@@ -1,10 +1,8 @@
 # magento-di
 
-This is a very WIP application of the Symfony DI container within Magento
+This provides a tiny module and a couple of hacks that gets Symfony DI integrated (to a point) with Magento core.
 
 ## Why?
-
-### Because I got drunk.
 
 I was thinking about a conversation I'd had with [Ciaran](https://github.com/ciaranmcnulty). We'd been talking about using Phpspec with Magento, and how we were frequently needing to mock Magento objects. That's something that I've previously accepted as a necessary evil of working with Magento, but I came to thinking that I might be taking the wrong approach.
 
@@ -20,4 +18,4 @@ Install the module as normal. The implementation also requires that changes are 
 
 ## Is this actually useful?
 
-I have no idea yet. It all sounds reasonable on paper, but there may be massive drawbacks, or something I've not thought of yet that makes the whole concept redundant. It'll be fun finding out.
+For the average Magento site, no, probably not. It adds an additional layer of complexity that is probably hard to justify in a lot of cases. However, if you are concerned about separating your domain from the framework then this is a viable approach.

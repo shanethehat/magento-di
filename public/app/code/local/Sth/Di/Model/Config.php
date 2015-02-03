@@ -43,12 +43,27 @@ class Sth_Di_Model_Config extends Mage_Core_Model_Config
     {
         $this->_container = new ContainerBuilder();
 
+        $this->_loadRootServicesXml();
+        $this->_loadModulesServicesXml();
+    }
+
+    protected function _loadRootServicesXml()
+    {
         $this->_loadServicesXmlForPath(
             $this->getOptions()->getEtcDir()
         );
+    }
+
+    protected function _loadModulesServicesXml()
+    {
+        $diNode = $this->getNode('sth_di');
+
+        if ( ! $diNode) {
+            return;
+        }
 
         $modulesWithServices = array_keys(
-            $this->getNode('sth_di')->asArray()
+            $diNode->asArray()
         );
 
         foreach ($modulesWithServices as $moduleName) {

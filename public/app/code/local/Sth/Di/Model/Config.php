@@ -9,7 +9,7 @@ class Sth_Di_Model_Config extends Mage_Core_Model_Config
     /**
      * @var ContainerBuilder
      */
-    private $_container;
+    protected $_container;
 
     /**
      * Class construct
@@ -39,10 +39,54 @@ class Sth_Di_Model_Config extends Mage_Core_Model_Config
     /**
      * Initialises the DI container
      */
-    private function _initContainer()
+    protected function _initContainer()
     {
         $this->_container = new ContainerBuilder();
-        $loader = new XmlFileLoader($this->_container, new FileLocator($this->getOptions()->getEtcDir()));
+
+        $this->_loadRootServicesXml();
+        $this->_loadModulesServicesXml();
+    }
+
+    protected function _loadRootServicesXml()
+    {
+        $this->_loadServicesXmlForPath(
+            $this->getOptions()->getEtcDir()
+        );
+    }
+
+    protected function _loadModulesServicesXml()
+    {
+        $diNode = $this->getNode('sth_di');
+
+        if ( ! $diNode) {
+            return;
+        }
+
+        $modulesWithServices = array_keys(
+            $diNode->asArray()
+        );
+
+        foreach ($modulesWithServices as $moduleName) {
+            if ( ! $this->getNode('modules/' . $moduleName)->is('active')) {
+                continue;
+            }
+
+            $this->_loadServicesXmlForPath(
+                $this->getModuleDir('etc', $moduleName)
+            );
+        }
+    }
+
+    /**
+     * @param string $path
+     */
+    protected function _loadServicesXmlForPath($path)
+    {
+        $loader = new XmlFileLoader(
+            $this->_container,
+            new FileLocator($path)
+        );
+
         $loader->load('services.xml');
     }
 }

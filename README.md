@@ -14,7 +14,43 @@ If we run with the idea of placing our domain model outside of Magento then we a
 
 ## Installation
 
-Install the module as normal. The implementation also requires that changes are made to public/index.php and public/app/Mage.php. Then run Composer.
+- Install the module in the project
+- Patch `<magento_root>/public` and `<magento_root>/app/Mage.php` with the changes in `public/index.php` and `public/app/Mage.php` (this repo). 
+- Add the following to your `composer.json`:
+
+```json
+{
+    "require": {
+        "symfony/dependency-injection": "2.5.*@stable",
+        "symfony/config": "2.5.*@stable"
+    }
+}
+```
+
+- Run `composer install`
+
+
+## Usage
+
+Services can be defined in `<magento_root>/etc/services.xml` or a module can define its own services with its own `services.xml` (`<module_root>/etc/services.xml`). If a module defines its own services a new node must be added to the modules main config:
+
+```xml
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Foo_Bar>
+            <version>0.1.0</version>
+        </Foo_Bar>
+    </modules>
+    <sth_di>
+        <Foo_Bar />
+    </sth_di>
+</config>
+```
+
+The new node `<sth_di>` must contain only one node which matches the name of the module.
+
+You can read more about declaring services via XML [here](http://symfony.com/doc/current/components/dependency_injection/introduction.html#setting-up-the-container-with-configuration-files).
 
 ## Is this actually useful?
 
